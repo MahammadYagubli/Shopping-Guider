@@ -1,0 +1,58 @@
+# Shopping-Guider
+This is the release version of previous App. in this version i let users to have different kind of list names and list items
+package com.example.mahammad.shopping_guider;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import android.widget.Button;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity  {
+    Button next_page;
+    Button help;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app);
+        setSupportActionBar(toolbar);
+        next_page=(Button)findViewById(R.id.My_List);
+        help=(Button) findViewById(R.id.help);
+        new_page();
+        setTitle("Shopping_Guide");
+    }
+    public void new_page(){
+
+        next_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this,shopping.class);
+                startActivity(i);
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,
+                                "1. if you want to add new item please long click on any item there then" +
+                                        "in new window click on add_new  and it will be new windows there write the name of item and " +
+                                        "click the button \"save\"" +
+                                "   \n" +
+                                " 2. If you want to delete any item " +
+                                "just Long click again and  click on delete button on new item \n" +
+                                "3. If you want rename the Item " +
+                                "just click on any item and in new page please write new name, it will be new Window there type the new name of item " +
+                                        "and then click on save"
+                        ,Toast.LENGTH_LONG  ).show();
+            }
+        });
+
+
+    }
+
+}
